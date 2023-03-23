@@ -1,0 +1,50 @@
+header {
+  background-color: hsl(0, 0%, 13%);
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 4rem;
+
+
+  .logo-container {
+    height: 2.5rem;
+    width: 5.5rem;
+    background-image: url('../../../assets/img/Marvel_Logo.svg.png');
+    background-size: 100% 100%;
+    margin-left: auto;
+    cursor: pointer;
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    margin-left: auto;
+
+    span {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background-color: hsl(358, 86%, 51%);
+      position: relative;
+      bottom: 10px;
+      right: 10px;
+      font-size: 10px;
+      border: 2px solid hsl(0, 0%, 13%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+
+    i {
+      background-image: url('../../../assets/img/cart-shopping-solid.svg');
+      width: 30px;
+      height: 25px;
+      background-repeat: no-repeat;
+      filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
+    }
+  }
+}
