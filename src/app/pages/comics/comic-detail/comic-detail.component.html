@@ -1,3 +1,32 @@
-<p>
-  comic-detail works!
-</p>
+<section *ngIf="comic$ | async as comic">
+  <img src="{{comic.thumbnail.path}}.{{comic.thumbnail.extension}}" alt="{{comic.title}}">
+  <div class="text-container">
+    <div class="title_price">
+      <h1 class="title">{{comic.title}}</h1>
+      <span class="price">{{comic.prices[0].price | currency}}</span>
+    </div>
+    <div class="info">
+      <div>
+        <h2>Published in:</h2>
+        <p>{{comic.dates[0].date | date}}</p>
+      </div>
+      <div *ngIf="creators$ | async as creators">
+        <h2>Written by:</h2>
+        <p>{{creators[0].name}}</p>
+      </div>
+    </div>
+
+    <p class="description">{{comic.description}}</p>
+    <div class="shopping_options">
+      <div class="quantity-buttons">
+        <button class="decrease-button" (click)="decreaseItemQuantity()">-</button>
+        <span>{{quantity}}</span>
+        <button class="increase-button" (click)="increaseItemQuantity()">+</button>
+      </div>
+      <button class="add-cart-button">
+        Add items to cart
+        <i class="add-cart-icon"></i>
+      </button>
+    </div>
+  </div>
+</section>

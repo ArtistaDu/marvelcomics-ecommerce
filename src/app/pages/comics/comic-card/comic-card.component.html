@@ -1,3 +1,12 @@
-<p>
-  comic-card works!
-</p>
+<div class="card">
+  <div class="img_wrapper">
+    <img src="{{comic.thumbnail.path}}/portrait_incredible.{{comic.thumbnail.extension}}" alt="{{comic.title}} thumbnail">
+  </div>
+  <div class="name_wrapper">
+    <div>
+      <h2>{{comic.title}}</h2>
+      <span class="author">{{comicWriter.length ? comicWriter[0].name : '' }}</span>
+    </div>
+    <span class="price">{{comic.prices[0].price | currency }}</span>
+  </div>
+</div>

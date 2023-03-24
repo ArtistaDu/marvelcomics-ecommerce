@@ -1,6 +1,13 @@
 <div class="search_wrapper">
   <div class="input_icon_container">
-    <input (keyup.Enter)="searchComic()" placeholder="What Marvel character you're looking for?" type="search" [formControl]="search">
+    <input (keyup.Enter)="searchComic()" placeholder="What Marvel comic you're looking for?" type="search" [formControl]="searchInput">
     <button role="search" (click)="searchComic()"><i class="search_icon"></i></button>
   </div>
 </div>
+<ul *ngIf="comics$ | async as comics">
+  <li *ngFor="let comic of comics">
+    <app-comic-card (click)="routeComic(comic.id)" [comic]="comic" ></app-comic-card>
+  </li>
+</ul>
+<mat-paginator style="margin-top: 1rem; box-shadow: rgb(50 50 93 / 25%) 0px 2px 5px -1px, rgb(0 0 0 / 30%) 0px 1px 3px -1px;" [pageSize]="pageSize" [length]="totalComicsResults" (page)="onPageChange($event)">
+</mat-paginator>

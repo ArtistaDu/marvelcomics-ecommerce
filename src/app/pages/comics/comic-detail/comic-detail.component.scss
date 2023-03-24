@@ -1,0 +1,112 @@
+
+
+section {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 0 8rem;
+  border-radius: 10px;
+  color: hsl(0, 0%, 13%);
+  font-weight: 500;
+
+
+  img {
+    height: auto;
+    width: 25%;
+    box-shadow: rgba(238, 23, 30, 0.4) -5px 5px, rgba(238, 23, 29, 0.3) -10px 10px, rgba(2238, 23, 30, 0.2) -15px 15px, rgba(238, 23, 30, 0.1) -20px 20px, rgba(238, 23, 30, 0.05) -25px 25px;
+  }
+
+  .text-container {
+    max-width: 60%;
+    padding-left: 2rem;
+
+    .title_price {
+      margin-bottom: 2rem;
+      .title {
+        font-family: 'Bangers', cursive;
+        letter-spacing: 3px;
+        font-size: 40px;
+        font-weight: 600;
+        margin-bottom: .1rem;
+      }
+
+      .price {
+        font-size: 28px;
+      }
+    }
+
+    .info {
+      display: flex;
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-right: 3rem;
+    }
+
+    .description {
+      margin-top: 1.8rem;
+      max-width: 75%;
+      font-weight: 400;
+      line-height: 1.5rem;
+    }
+    .shopping_options {
+      display: flex;
+      align-items: center;
+      margin-top: 2rem;
+
+      .quantity-buttons {
+        display: flex;
+        align-items: center;
+
+        span {
+          margin: 0 .8rem;
+        }
+
+      }
+
+      .increase-button, .decrease-button {
+        height: 42px;
+        width: 42px;
+        border-radius: 5px;
+        font-size: 30px;
+        text-shadow: -1px 1px 1px hsl(358, 86%, 51%);
+        box-shadow: rgba(50, 50, 93, 0.5) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+
+        &:hover {
+          transition: .25s;
+          background-color: hsl(0, 0%, 89%)
+          ;
+        }
+      }
+
+
+      .add-cart-button {
+        margin-left: 2rem;
+        background-color: hsla(0, 0%, 13%, 0.7);
+        display: flex;
+        align-items: center;
+        padding: 13px 26px;
+        border-radius: 3px;
+        color: hsl(0, 0%, 97%);
+        box-shadow: rgba(50, 50, 93, 1.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+
+        &:hover {
+          background-color: hsla(0, 0%, 13%, 1);
+          transition: .25s;
+        }
+      }
+      .add-cart-icon {
+        margin-left: 1rem;
+        background-image: url('../../../../assets/img/cart-shopping-solid.svg');
+        filter: invert(99%) sepia(70%) saturate(255%) hue-rotate(241deg) brightness(110%) contrast(100%);
+        width: 16px;
+        height: 14px;
+      }
+
+    }
+    }
+
+
+}
