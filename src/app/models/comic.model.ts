@@ -42,7 +42,7 @@ export interface ApiResponse {
   };
 }
 
-export interface Url {
+interface Url {
   type: string
   url: string
 }

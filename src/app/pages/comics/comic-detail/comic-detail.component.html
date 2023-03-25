@@ -12,18 +12,18 @@
       </div>
       <div *ngIf="creators$ | async as creators">
         <h2>Written by:</h2>
-        <p>{{creators[0].name}}</p>
+        <p>{{creators.length ? creators[0].name : 'Unknown'}}</p>
       </div>
     </div>
 
     <p class="description">{{comic.description}}</p>
     <div class="shopping_options">
       <div class="quantity-buttons">
-        <button class="decrease-button" (click)="decreaseItemQuantity()">-</button>
+        <button [disabled]="quantity == 0" class="decrease-button" (click)="decreaseItemQuantity()">-</button>
         <span>{{quantity}}</span>
         <button class="increase-button" (click)="increaseItemQuantity()">+</button>
       </div>
-      <button class="add-cart-button">
+      <button [disabled]="quantity == 0" (click)="addToCart(comic)" class="add-cart-button">
         Add items to cart
         <i class="add-cart-icon"></i>
       </button>

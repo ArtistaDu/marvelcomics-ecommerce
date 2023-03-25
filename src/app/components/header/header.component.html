@@ -2,6 +2,6 @@
   <div routerLink="/comics" class="logo-container"></div>
   <button routerLink="/cart" type="button">
     <i class="cart-icon"></i>
-    <span class="items-number">2</span>
+    <span [ngStyle]="{'visibility': (cartTotalQuantity$ | async) ? 'visible' : 'hidden' }" class="items-number">{{(cartTotalQuantity$ | async)}}</span>
   </button>
 </header>

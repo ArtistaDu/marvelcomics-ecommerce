@@ -1,8 +1,10 @@
+import { CartService } from './../../../shared/cart-service/cart.service';
 import { Comic, Creators } from './../../../models/comic.model';
 import { filter, Observable, switchMap, map, tap } from 'rxjs';
 import { ComicsApiService } from './../service/comics-api/comics-api.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { Product } from 'src/app/models/product.model';
 
 @Component({
   selector: 'app-comic-detail',
@@ -13,7 +15,8 @@ export class ComicDetailComponent implements OnInit {
 
   constructor(
     private comicsService: ComicsApiService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private cartService: CartService
 
   ) {
   }
@@ -37,7 +40,8 @@ export class ComicDetailComponent implements OnInit {
       map(comic => comic.creators.items.
         filter(creator => creator.role === 'writer')),
 
-    )
+        )
+        this.creators$.subscribe(data => console.log(data))
   }
 
   decreaseItemQuantity() {
@@ -46,6 +50,18 @@ export class ComicDetailComponent implements OnInit {
 
   increaseItemQuantity() {
     this.quantity++
+  }
+
+  addToCart(comic: Comic) {
+    const product: Product = {
+      id: comic.id,
+      title: comic.title,
+      prices: comic.prices,
+      quantity: this.quantity,
+      coupon: false,
+      rare: false
+    };
+    this.cartService.addToCart(product);
   }
 
 }

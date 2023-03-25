@@ -1,1 +1,7 @@
-<p>cart-view works!</p>
+<section *ngIf="cartItems$ | async as products">
+  <ul>
+    <li *ngFor="let product of products">
+      funcionou pai
+    </li>
+  </ul>
+</section>
