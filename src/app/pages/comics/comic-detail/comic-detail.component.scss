@@ -1,10 +1,8 @@
-
-
 section {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  margin: 0 8rem;
+  margin: 0 auto;
   border-radius: 10px;
   color: hsl(0, 0%, 13%);
   font-weight: 500;
@@ -22,6 +20,7 @@ section {
 
     .title_price {
       margin-bottom: 2rem;
+
       .title {
         font-family: 'Bangers', cursive;
         letter-spacing: 3px;
@@ -51,6 +50,7 @@ section {
       font-weight: 400;
       line-height: 1.5rem;
     }
+
     .shopping_options {
       display: flex;
       align-items: center;
@@ -67,7 +67,8 @@ section {
 
       }
 
-      .increase-button, .decrease-button {
+      .increase-button,
+      .decrease-button {
         background-color: hsl(0, 0%, 80%);
         height: 42px;
         width: 42px;
@@ -77,14 +78,13 @@ section {
         box-shadow: rgba(50, 50, 93, 0.5) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 
         &:disabled {
-          opacity: 0.5  ;
+          opacity: 0.5;
           text-shadow: 0px 0px 0px;
         }
 
         &:hover {
           transition: .25s;
-          background-color: hsl(0, 0%, 75%)
-          ;
+          background-color: hsl(0, 0%, 75%);
         }
       }
 
@@ -109,6 +109,7 @@ section {
           background-color: hsla(0, 0%, 13%, 0.1);
         }
       }
+
       .add-cart-icon {
         margin-left: 1rem;
         background-repeat: no-repeat;
@@ -119,7 +120,71 @@ section {
       }
 
     }
+  }
+
+
+
+
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  section {
+    flex-direction: column;
+    align-items: center;
+    img {
+      margin-bottom: 3em;
+      width: 50%;
     }
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .text-container {
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+
+      .title {
+        font-size: 20px !important;
+      }
+
+      .price {
+       font-size:18px !important;
+      }
+
+      .info {
+        justify-content: space-between;
+      }
+      h2 {
+        margin: 0;
+        font-size: 16px;
+      }
+
+      .description {
+        max-width: 100%;
+      }
+
+      .shopping_options {
+        flex-direction: column;
+        .add-cart-button {
+          margin-top: 1rem;
+          margin-left: 0;
+        }
+
+        .increase-button, .decrease-button {
+          width: 24px;
+          height: 24px;
+          font-size: 14px;
+          vertical-align: center;
+        }
+      }
+    }
+
+
+  }
+
 
 
 }

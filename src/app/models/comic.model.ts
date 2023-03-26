@@ -13,6 +13,7 @@ export interface Comic {
   }
   urls: Url[];
   dates: Date[];
+  rare: boolean;
 }
 
 export interface Creators {

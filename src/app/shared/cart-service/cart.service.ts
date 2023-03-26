@@ -48,7 +48,7 @@ export class CartService {
 
   updateCartSubtotal() {
     const currentItems = this.items.getValue();
-    const subtotal = currentItems.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+    const subtotal = currentItems.reduce((acc, item) => acc + item.price, 0);
     this.cartSubtotal.next(subtotal);
   }
 
@@ -56,6 +56,18 @@ export class CartService {
     const currentItems = this.items.getValue();
     const totalQuantity = currentItems.reduce((acc, item) => acc + item.quantity, 0);
     this.cartTotalQuantity.next(totalQuantity);
+  }
+
+  removeItem(product: Product) {
+    const currentItems = this.items.getValue();
+    const itemIndex = this.verifyItemIndex(currentItems, product);
+
+    if (itemIndex !== -1) {
+      currentItems.splice(itemIndex, 1);
+      this.items.next(currentItems);
+      this.updateCartTotalQuantity();
+      this.updateCartSubtotal();
+    }
   }
 
   clearCart() {

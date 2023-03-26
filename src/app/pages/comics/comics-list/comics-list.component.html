@@ -1,4 +1,4 @@
-<section *ngIf="comics$ | async as comics">
+<section *ngIf="comics$ | async as comics; else spinner">
   <div class="search_wrapper">
     <div class="input_icon_container">
       <input (keyup.Enter)="searchComic()" placeholder="What Marvel comic you're looking for?" type="search"
@@ -24,3 +24,6 @@
     [pageSize]="pageSize" [length]="totalComicsResults" (page)="onPageChange($event)">
   </mat-paginator>
 </section>
+<ng-template #spinner>
+  <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#ee353a" type = "ball-beat" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>
+</ng-template>

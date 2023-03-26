@@ -5,6 +5,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { Observable } from 'rxjs';
 import { Comic } from 'src/app/models/comic.model';
 import { ComicsApiService } from '../service/comics-api/comics-api.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-comics-list',
@@ -21,10 +22,12 @@ export class ComicsListComponent implements OnInit {
 
   constructor(
     public comicsService: ComicsApiService,
-    private router: Router
+    private router: Router,
+    private spinnerService: NgxSpinnerService,
   ) { }
 
   ngOnInit(): void {
+    this.spinnerService.show()
     this.comics$ = this.comicsService.getComics()
     this.getComics()
     this.setTotalComicsResults()

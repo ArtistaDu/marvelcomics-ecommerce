@@ -23,8 +23,26 @@ export class ComicsApiService {
       (`${this._BASE_URL}/comics?orderBy=title&offset=${offset}&apikey=${this.apiPublicKey}`)
       .pipe(
         tap(data => this.totalComicsResults.next(data.data.total)),
-        map((data) => data.data.results),
-      ).subscribe(comics => this.comics.next(comics))
+        map((data) => {
+          const comics = data.data.results;
+          return comics.map(comic => ({
+            ...comic,
+            rare: false
+          }));
+        }),
+        map(comics => this.applyRarity(comics))
+      )
+      .subscribe(comics => this.comics.next(comics)
+      );
+  }
+
+  applyRarity(comics: Comic[]) {
+    const numRareComics = Math.round(comics.length * 0.1);
+    for (let i = 0; i < numRareComics; i++) {
+      const randomIndex = Math.floor(Math.random() * comics.length);
+      comics[randomIndex].rare = true;
+    }
+    return comics
   }
 
   getComics(): Observable<Comic[] | undefined> {

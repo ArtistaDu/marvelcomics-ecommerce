@@ -1,16 +1,22 @@
 <div class="product" [class.no-top-border]="index % 2 === 1">
-  <img src="{{product.thumbnail.path}}/portrait_small.{{product.thumbnail.extension}}"
-    alt="{{product.title}} thumbnail">
-  <div class="quantity-container">
-    <label for="quantity">Qty.</label>
-    <select id="quantity" [formControl]="quantityControl">
-      <option *ngFor="let i of quantityOptions" [ngValue]="i">{{i}}</option>
-    </select>
-  </div>
-  <h2>{{product.title}}</h2>
-  <div class="coupon_container">
-    <input maxlength="15" placeholder="Add Coupon">
-    <button type="button"><i class="coupon-icon"></i></button>
-  </div>
-  <span>{{product.price | currency}}</span>
+    <img src="{{product.thumbnail.path}}/portrait_small.{{product.thumbnail.extension}}"
+      alt="{{product.title}} thumbnail">
+      <span>{{product.price | currency}}</span>
+
+
+    <h2>{{product.title}}</h2>
+    <div class="container">
+      <div class="coupon_container">
+        <input [formControl]="couponCodeControl" (keyup.enter)="applyCoupon()" maxlength="16" placeholder="Add Coupon">
+        <button [disabled]="product.coupon" (click)="applyCoupon()" type="button"><i class="coupon-icon"></i></button>
+      </div>
+      <div [hidden]="!message">{{message}}</div>
+    </div>
+    <div class="quantity-container">
+      <label for="quantity">Qty.</label>
+      <select id="quantity" [formControl]="quantityControl">
+        <option *ngFor="let i of quantityOptions" [ngValue]="i">{{i}}</option>
+      </select>
+    </div>
+    <button (click)="removeItem(product)" class="remove-button"><i class="remove-item-icon"></i></button>
 </div>

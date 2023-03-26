@@ -1,3 +1,4 @@
+import { NgxSpinnerService } from 'ngx-spinner';
 import { CartService } from './../../../shared/cart-service/cart.service';
 import { Comic, Creators } from './../../../models/comic.model';
 import { filter, Observable, switchMap, map, tap } from 'rxjs';
@@ -16,7 +17,9 @@ export class ComicDetailComponent implements OnInit {
   constructor(
     private comicsService: ComicsApiService,
     private route: ActivatedRoute,
-    private cartService: CartService
+    private cartService: CartService,
+    private spinnerService: NgxSpinnerService,
+    private router: Router,
 
   ) {
   }
@@ -24,22 +27,23 @@ export class ComicDetailComponent implements OnInit {
   comic$!: Observable<Comic>
   creators$!: Observable<Creators[]>
   quantity: number = 0
-
+  isRare!: boolean
 
   ngOnInit() {
+    this.spinnerService.show()
     this.comic$ = this.route.paramMap.pipe(
       switchMap((params: ParamMap) =>
         this.comicsService.getComicById(params.get('id')!))
     );
-    this.getcomicWriter()
+    this.getComicWriter()
   }
 
-  getcomicWriter(): any {
+  getComicWriter() {
 
     this.creators$ = this.comic$.pipe(
       map(comic => comic.creators.items.
         filter(creator => creator.role === 'writer')),
-        )
+    )
   }
 
   decreaseItemQuantity() {
@@ -51,6 +55,8 @@ export class ComicDetailComponent implements OnInit {
   }
 
   addToCart(comic: Comic) {
+    this.checkRarity(comic.id)
+
     const product: Product = {
       id: comic.id,
       title: comic.title,
@@ -59,9 +65,16 @@ export class ComicDetailComponent implements OnInit {
       thumbnail: comic.thumbnail,
       quantity: this.quantity,
       coupon: false,
-      rare: false
+      rare: this.isRare
     };
     this.cartService.addToCart(product);
+    this.router.navigateByUrl('/cart');
   }
 
+  checkRarity(id: string) {
+    this.comicsService.getComics().pipe(
+      map(comics => comics?.find(comic => comic.id === id)),
+      map(comic => !!comic?.rare),
+    ).subscribe(rarity => this.isRare = rarity)
+  }
 }
