@@ -1,59 +1,88 @@
-.search_wrapper {
-  margin-bottom: 3rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+section {
 
-  .input_icon_container {
+
+
+  .search_wrapper {
+    margin-bottom: 3rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
 
-    input {
-      background-color: hsl(0, 0%, 13%);
-      color: white;
-      height: 40px;
-      padding: 1.4rem 50px 1.4rem 25px;
-      border-radius: 8rem;
-      width: 40%;
-      font-family: 'Bangers', cursive;
-      letter-spacing: 4px;
-      box-shadow: rgb(50 50 93 / 25%) 0px 2px 5px -1px, rgb(0 0 0 / 30%) 0px 1px 3px -1px;
-      border: 1px solid hsl(0, 0%, 50%);
-
-      &::placeholder {
-        font-size: 14px;
-      }
-
-    }
-
-    button {
+    .input_icon_container {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      margin-left: -41px;
-      background-color: hsl(358, 86%, 51%)      ;
+      width: 100%;
 
-      .search_icon {
-        background-image: url('../../../../assets/img/magnifying-glass-solid.svg');
-        background-repeat: no-repeat;
-        width: 18px;
-        height: 18px;
-        filter: invert(99%) sepia(70%) saturate(255%) hue-rotate(241deg) brightness(110%) contrast(100%);
+      input {
+        background-color: hsl(0, 0%, 13%);
+        color: white;
+        height: 40px;
+        padding: 1.4rem 50px 1.4rem 25px;
+        border-radius: 8rem;
+        width: 40%;
+        font-family: 'Bangers', cursive;
+        letter-spacing: 4px;
+        box-shadow: rgb(50 50 93 / 25%) 0px 2px 5px -1px, rgb(0 0 0 / 30%) 0px 1px 3px -1px;
+        border: 1px solid hsl(0, 0%, 50%);
+
+        &::placeholder {
+          font-size: 14px;
+        }
+
+      }
+
+      button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        margin-left: -41px;
+        background-color: hsl(358, 86%, 51%)      ;
+
+        .search_icon {
+          background-image: url('../../../../assets/img/magnifying-glass-solid.svg');
+          background-repeat: no-repeat;
+          width: 18px;
+          height: 18px;
+          filter: invert(99%) sepia(70%) saturate(255%) hue-rotate(241deg) brightness(110%) contrast(100%);
+        }
+      }
+    }
+
+  }
+
+
+  ul {
+    display: grid;
+    grid-template-columns: repeat(5, 216px);
+    grid-template-rows: 1fr;
+    gap: 1.25rem;
+    justify-content: center;
+
+  }
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    p {
+      font-size: 32px;
+    }
+
+    .image_wrapper {
+      height: auto;
+      width: 30%;
+      margin-left: 2rem;
+      img {
+        width: 100%;
+        height: 100%;
       }
     }
   }
 
 }
 
-
-ul {
-  display: grid;
-  grid-template-columns: repeat(5, 216px);
-  grid-template-rows: 1fr;
-  gap: 1.25rem;
-}

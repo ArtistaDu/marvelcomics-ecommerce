@@ -7,6 +7,7 @@ import { ComicsListComponent } from './comics-list/comics-list.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { ComicsApiService } from './service/comics-api/comics-api.service';
+import { RouteReuseStrategy } from '@angular/router';
 
 
 
@@ -23,6 +24,6 @@ import { ComicsApiService } from './service/comics-api/comics-api.service';
     ComicsRoutingModule,
     MatPaginatorModule
   ],
-  providers: [ComicsApiService]
+
 })
 export class ComicsModule { }

@@ -61,7 +61,8 @@ section {
         align-items: center;
 
         span {
-          margin: 0 .8rem;
+          text-align: center;
+          width: 3rem;
         }
 
       }
@@ -89,6 +90,7 @@ section {
 
 
       .add-cart-button {
+        font-weight: 400;
         margin-left: 2rem;
         background-color: hsla(0, 0%, 13%, 0.7);
         display: flex;
@@ -109,6 +111,7 @@ section {
       }
       .add-cart-icon {
         margin-left: 1rem;
+        background-repeat: no-repeat;
         background-image: url('../../../../assets/img/cart-shopping-solid.svg');
         filter: invert(99%) sepia(70%) saturate(255%) hue-rotate(241deg) brightness(110%) contrast(100%);
         width: 16px;

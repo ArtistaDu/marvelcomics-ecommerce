@@ -11,11 +11,15 @@ import { Observable } from 'rxjs';
 export class CartViewComponent implements OnInit {
 
   cartItems$!: Observable<Product[]>
+  cartSubtotal$!: Observable<number | null>
+
+
   constructor(public cartService: CartService) {
 
   }
 
   ngOnInit(): void {
       this.cartItems$ = this.cartService.getItems()
+      this.cartSubtotal$ = this.cartService.getSubtotal()
   }
 }

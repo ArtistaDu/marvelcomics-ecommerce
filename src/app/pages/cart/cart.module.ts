@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CartViewComponent } from './cart-view/cart-view.component';
 import { CartProductComponent } from './cart-product/cart-product.component';
 import { CartRoutingModule } from './cart-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -13,7 +14,8 @@ import { CartRoutingModule } from './cart-routing.module';
   ],
   imports: [
     CommonModule,
-    CartRoutingModule
+    CartRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class CartModule { }

@@ -9,7 +9,8 @@ const routes: Routes = [
   },
   {
     path: 'comics',
-    loadChildren: () => import('./pages/comics/comics.module').then(m => m.ComicsModule)
+    loadChildren: () => import('./pages/comics/comics.module').then(m => m.ComicsModule),
+
   },
   {
     path: 'cart',
@@ -18,7 +19,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    onSameUrlNavigation: 'reload'
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

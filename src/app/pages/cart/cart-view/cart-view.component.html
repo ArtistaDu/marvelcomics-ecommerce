@@ -1,7 +1,27 @@
-<section *ngIf="cartItems$ | async as products">
-  <ul>
-    <li *ngFor="let product of products">
-      funcionou pai
-    </li>
-  </ul>
+<section *ngIf="cartItems$ | async as products;">
+
+  <h1>Shopping Cart</h1>
+  <div *ngIf="products.length; else emptyCart ">
+    <ul>
+      <li *ngFor="let product of products; let i = index">
+        <app-cart-product [product]="product" [index]="i"></app-cart-product>
+      </li>
+    </ul>
+    <div class="subtotal_container">
+      <span style="margin-top: 2rem;">Subtotal: </span>
+      <span>{{cartSubtotal$ | async | currency}}</span>
+    </div>
+  </div>
+  <ng-template #emptyCart>
+    <div class="container">
+      <div>
+        <p>Your cart is empty.</p>
+        <p>Click <a routerLink="/comics">here</a> to continue shopping!</p>
+      </div>
+      <div class="image_wrapper">
+        <img src="../../../../assets/img/wanda2.png" alt="">
+      </div>
+    </div>
+
+  </ng-template>
 </section>

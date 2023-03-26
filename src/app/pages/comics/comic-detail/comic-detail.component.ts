@@ -39,9 +39,7 @@ export class ComicDetailComponent implements OnInit {
     this.creators$ = this.comic$.pipe(
       map(comic => comic.creators.items.
         filter(creator => creator.role === 'writer')),
-
         )
-        this.creators$.subscribe(data => console.log(data))
   }
 
   decreaseItemQuantity() {
@@ -57,6 +55,8 @@ export class ComicDetailComponent implements OnInit {
       id: comic.id,
       title: comic.title,
       prices: comic.prices,
+      price: Number(comic.prices[0].price) * this.quantity,
+      thumbnail: comic.thumbnail,
       quantity: this.quantity,
       coupon: false,
       rare: false

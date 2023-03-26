@@ -1,0 +1,76 @@
+.product.no-top-border {
+  border-top: none;
+}
+
+.product {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: white;
+  padding: 1rem;
+  border: 1px solid hsl(0, 0%, 13%);
+
+  h2 {
+    max-width: 250px;
+  }
+
+  .coupon_container {
+    display: flex;
+
+    &:hover input {
+      border-color: hsl(358, 86%, 46%);
+    }
+
+    input {
+      border: 1px solid hsl(358, 86%, 51%);
+      padding-left: 1rem;
+    }
+
+    button {
+      background-color: hsl(358, 86%, 51%);
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      border-radius: 0 3px 3px 0;
+      box-shadow: rgba(50, 50, 93, 1.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+      transition: 0.25s;
+
+      &:hover {
+        background-color: hsl(358, 86%, 46%);
+      }
+
+      i {
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 16px;
+        height: 16px;
+        background-image: url('../../../../assets/img/tag-solid.svg');
+        filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
+      }
+    }
+  }
+
+
+
+  .quantity-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    label {
+      margin-bottom: 5px;
+    }
+
+    select {
+      border: 0;
+      background-color: hsl(0, 0%, 80%);
+      padding: 0.25rem 0.5rem;
+      box-shadow: rgba(50, 50, 93, 1.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    }
+  }
+
+  span {
+    font-weight: 600;
+    font-size: 18px;
+  }
+}

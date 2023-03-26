@@ -21,7 +21,7 @@
       <div class="quantity-buttons">
         <button [disabled]="quantity == 0" class="decrease-button" (click)="decreaseItemQuantity()">-</button>
         <span>{{quantity}}</span>
-        <button class="increase-button" (click)="increaseItemQuantity()">+</button>
+        <button class="increase-button" [disabled]=" quantity >= 10" (click)="increaseItemQuantity()">+</button>
       </div>
       <button [disabled]="quantity == 0" (click)="addToCart(comic)" class="add-cart-button">
         Add items to cart

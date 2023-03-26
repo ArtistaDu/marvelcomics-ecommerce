@@ -12,21 +12,22 @@ import { ComicsApiService } from '../service/comics-api/comics-api.service';
   styleUrls: ['./comics-list.component.scss']
 })
 
-export class ComicsListComponent implements OnInit{
+export class ComicsListComponent implements OnInit {
   searchInput = new FormControl()
-  comics$!: Observable<Comic[]>
+  comics$!: Observable<Comic[] | undefined>
   totalComicsResults!: number
   pageSize = 20;
   currentPage = 0;
 
   constructor(
-    private comicsService: ComicsApiService,
+    public comicsService: ComicsApiService,
     private router: Router
-    ) {}
+  ) { }
 
   ngOnInit(): void {
-      this.getComics()
-      this.setTotalComicsResults()
+    this.comics$ = this.comicsService.getComics()
+    this.getComics()
+    this.setTotalComicsResults()
   }
 
   setTotalComicsResults() {
@@ -36,7 +37,7 @@ export class ComicsListComponent implements OnInit{
   }
 
   getComics() {
-    this.comics$ = this.comicsService.getComics(0)
+    this.comicsService.fetchComics(0)
   }
 
   onPageChange(event: PageEvent) {
@@ -44,18 +45,20 @@ export class ComicsListComponent implements OnInit{
     this.currentPage = event.pageIndex;
 
     if (this.searchInput.value) {
-      this.comics$ = this.comicsService.getComicsByName(searchValue, this.currentPage * this.pageSize)
+      this.comicsService.getComicsByName(searchValue, this.currentPage * this.pageSize)
     } else {
-      this.comics$ = this.comicsService.getComics(this.currentPage * this.pageSize);
+      this.comicsService.fetchComics(this.currentPage * this.pageSize);
 
     }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
   }
 
   searchComic() {
     const value = this.searchInput.value
 
     if (value) {
-      this.comics$ = this.comicsService.getComicsByName(value, 0)
+      this.comicsService.getComicsByName(value, 0)
 
     } else {
       this.getComics()
@@ -63,7 +66,6 @@ export class ComicsListComponent implements OnInit{
   }
 
   routeComic(id: string) {
-    console.log('chamou')
     this.router.navigateByUrl(`comics/${id}`);
   }
 
