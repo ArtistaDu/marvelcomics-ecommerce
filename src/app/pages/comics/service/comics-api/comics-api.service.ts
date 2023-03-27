@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, tap, map, BehaviorSubject, skip } from 'rxjs';
+import { Observable, tap, map, BehaviorSubject } from 'rxjs';
 import { ApiResponse, Comic } from 'src/app/models/comic.model';
 import { environment } from 'src/environments/environment';
 
