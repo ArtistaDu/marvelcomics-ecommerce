@@ -4,7 +4,7 @@
 
 Nesse desafio, criei uma pequena loja de revistas em quadrinhos que consome a API oficial da Marvel. Explicarei melhor nos tópicos seguintes!
 
-#### Link para acesso: 
+#### Link para acesso: [https://artistadu.github.io/marvelcomics-ecommerce/comics](url)
 
 # Funcionalidades
 
